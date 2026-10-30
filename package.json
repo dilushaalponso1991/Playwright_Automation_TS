@@ -2,7 +2,14 @@
   "name": "skilledlifeautomationframework",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "node --env-file-if-exists=.env ./node_modules/@playwright/test/cli.js test",
+    "test:e2e": "node --env-file-if-exists=.env ./node_modules/@playwright/test/cli.js test",
+    "test:e2e:company": "node --env-file-if-exists=.env ./node_modules/@playwright/test/cli.js test tests/register",
+    "test:e2e:subscription": "node --env-file-if-exists=.env ./node_modules/@playwright/test/cli.js test tests/register/company-subscription-dashboard.spec.ts",
+    "test:e2e:profile": "node --env-file-if-exists=.env ./node_modules/@playwright/test/cli.js test tests/company/company-profile.spec.ts",
+    "test:e2e:list": "node --env-file-if-exists=.env ./node_modules/@playwright/test/cli.js test --list"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
