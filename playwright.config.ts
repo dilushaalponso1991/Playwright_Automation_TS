@@ -1,4 +1,4 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig } from '@playwright/test';
 import { environment } from './config/environment';
 
 /**
@@ -30,11 +30,11 @@ export default defineConfig({
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
 
-       baseURL: environment.baseUrl,
-       headless: false,
-  screenshot: 'only-on-failure',
-  video: 'retain-on-failure',
-  trace: 'retain-on-failure'
+    baseURL: process.env.E2E_BASE_URL ?? environment.baseUrl,
+    headless: process.env.HEADED !== 'true',
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
+    trace: 'retain-on-failure'
   },
 
 
@@ -43,7 +43,7 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { viewport: { width: 1280, height: 720 } },
     },
 
     // {
